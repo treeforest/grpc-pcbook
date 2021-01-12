@@ -6,6 +6,21 @@ import (
 	"io/ioutil"
 )
 
+// WriteProtobufToJsonFile write protocol buffer message to json file
+func WriteProtobufToJsonFile(message proto.Message, filename string) error {
+	data, err := ProtobufToJson(message)
+	if err != nil {
+		return fmt.Errorf("cannot marshal proto message to JSON: %w", err)
+	}
+
+	err = ioutil.WriteFile(filename, []byte(data), 0644)
+	if err != nil {
+		return fmt.Errorf("connot write JSON data to file: %w", err)
+	}
+
+	return nil
+}
+
 // WriteProtobufToBinaryFile write protocol buffer message to binary file
 func WriteProtobufToBinaryFile(message proto.Message, filename string) error {
 	data, err := proto.Marshal(message)

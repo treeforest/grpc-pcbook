@@ -1,0 +1,62 @@
+{
+ "id": "94b7fdc8-895f-4f5b-a0b3-8bbdbf0a4fd4",
+ "brand": "Apple",
+ "name": "Macbook Pro",
+ "cpu": {
+  "brand": "Intel",
+  "name": "Core i5-1050F",
+  "number_core": 2,
+  "number_threads": 3,
+  "min_ghz": 2.8228526994675898,
+  "max_ghz": 3.0369466529964226
+ },
+ "ram": {
+  "value": "38",
+  "unit": "GIGABYTE"
+ },
+ "gpus": [
+  {
+   "brand": "AMD",
+   "name": "RX 580",
+   "min_ghz": 1.2742050978765194,
+   "max_ghz": 1.7172104008919582,
+   "memory": {
+    "value": "6",
+    "unit": "GIGABYTE"
+   }
+  }
+ ],
+ "storages": [
+  {
+   "driver": "SSD",
+   "memory": {
+    "value": "756",
+    "unit": "GIGABYTE"
+   }
+  },
+  {
+   "driver": "HDD",
+   "memory": {
+    "value": "4",
+    "unit": "GIGABYTE"
+   }
+  }
+ ],
+ "screen": {
+  "size_inch": 20.015816,
+  "resolution": {
+   "width": 3397,
+   "height": 1911
+  },
+  "panel": "IPS",
+  "multitouch": false
+ },
+ "keyboard": {
+  "layout": "QWERTY",
+  "backlit": true
+ },
+ "weight_kg": 2.5993438839147003,
+ "price_usd": 1572.1357333959006,
+ "release_year": 2018,
+ "updateAt": "2021-01-12T09:10:07.528409900Z"
+}
