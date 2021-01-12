@@ -4,11 +4,10 @@ import (
 	"context"
 	"errors"
 	"fmt"
-	"github.com/treeforest/grpc-pcbook/pb"
 	"github.com/jinzhu/copier"
+	"github.com/treeforest/grpc-pcbook/pb"
 	"log"
 	"sync"
-	"time"
 )
 
 // ErrAlreadyExists is returned when a record with the same ID already exists in the store
@@ -78,8 +77,8 @@ func (store *InMemoryLaptopStore) Search(
 
 	for _, laptop := range store.data {
 		// heavy processing
-		time.Sleep(time.Second)
-		log.Print("checking laptop id: ", laptop.GetId())
+		//time.Sleep(time.Second)
+		//log.Print("checking laptop id: ", laptop.GetId())
 
 		if ctx.Err() == context.Canceled || ctx.Err() == context.DeadlineExceeded {
 			log.Print("context is canceled")
@@ -107,7 +106,7 @@ func isQualified(filter *pb.Filter, laptop *pb.Laptop) bool {
 		return false
 	}
 
-	if laptop.GetCpu().GetNumberCore() < filter.GetMinCpuCores() {
+	if laptop.GetCpu().GetNumberCores() < filter.GetMinCpuCores() {
 		return false
 	}
 

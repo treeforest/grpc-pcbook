@@ -60,7 +60,7 @@ func searchLaptop(laptopClient pb.LaptopServiceClient, filter *pb.Filter) {
 		log.Print("- found: ", laptop.GetId())
 		log.Print("	+ brand: ", laptop.GetBrand())
 		log.Print("	+ name: ", laptop.GetName())
-		log.Print("	+ cpu cores: ", laptop.GetCpu().GetNumberCore())
+		log.Print("	+ cpu cores: ", laptop.GetCpu().GetNumberCores())
 		log.Print("	+ cpu min ghz: ", laptop.GetCpu().GetMinGhz())
 		log.Print("	+ ram: ", laptop.GetRam())
 		log.Print("	+ price: ", laptop.GetPriceUsd())

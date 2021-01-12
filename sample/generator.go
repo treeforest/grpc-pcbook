@@ -19,8 +19,8 @@ func NewCPU() *pb.CPU {
 	brand := randomCPUBrand()
 	name := randomCPUName(brand)
 
-	numberCore := randomInt(2, 8)
-	numberThreads := randomInt(numberCore, 12)
+	numberCores := randomInt(2, 8)
+	numberThreads := randomInt(numberCores, 12)
 
 	minGhz := randomFloat64(2.0, 3.5)
 	maxGhz := randomFloat64(minGhz, 5.0)
@@ -28,7 +28,7 @@ func NewCPU() *pb.CPU {
 	cpu := &pb.CPU{
 		Brand:         brand,
 		Name:          name,
-		NumberCore:    uint32(numberCore),
+		NumberCores:    uint32(numberCores),
 		NumberThreads: uint32(numberThreads),
 		MinGhz:        minGhz,
 		MaxGhz:        maxGhz,
