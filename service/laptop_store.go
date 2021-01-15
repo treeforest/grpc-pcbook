@@ -10,12 +10,12 @@ import (
 	"sync"
 )
 
-// ErrAlreadyExists is returned when a record with the same ID already exists in the store
+// ErrAlreadyExists is returned when a record with the same ID already exists in the laptopStore
 var ErrAlreadyExists = errors.New("record already exists")
 
-// LaptopStore is an interface to store laptop
+// LaptopStore is an interface to laptopStore laptop
 type LaptopStore interface {
-	// Save saves the laptop to the store
+	// Save saves the laptop to the laptopStore
 	Save(laptop *pb.Laptop) error
 	// Find finds a laptop by ID
 	Find(id string) (*pb.Laptop, error)
@@ -36,7 +36,7 @@ func NewInMemoryLaptopStore() *InMemoryLaptopStore {
 	}
 }
 
-// Save saves the laptop to the store
+// Save saves the laptop to the laptopStore
 func (store *InMemoryLaptopStore) Save(laptop *pb.Laptop) error {
 	store.mutex.Lock()
 	defer store.mutex.Unlock()

@@ -1,27 +1,27 @@
 {
- "id": "11b91d37-2ce6-43dc-9bb4-e7361ed382da",
+ "id": "d8871d00-0204-485b-9371-1f99b7454f1c",
  "brand": "Apple",
  "name": "Macbook Pro",
  "cpu": {
-  "brand": "AMD",
-  "name": "Ryzen 7 PRO 2700U",
-  "number_cores": 4,
-  "number_threads": 10,
-  "min_ghz": 2.7260121669613766,
-  "max_ghz": 4.938239071888578
+  "brand": "Intel",
+  "name": "Core i5-1050F",
+  "number_cores": 2,
+  "number_threads": 6,
+  "min_ghz": 3.0727544484447886,
+  "max_ghz": 3.7337108935923915
  },
  "ram": {
-  "value": "37",
+  "value": "9",
   "unit": "GIGABYTE"
  },
  "gpus": [
   {
-   "brand": "NVIDIA",
-   "name": "RTX 2060",
-   "min_ghz": 1.0116910504828738,
-   "max_ghz": 1.4246499086788176,
+   "brand": "AMD",
+   "name": "RX 580",
+   "min_ghz": 1.3165943747550917,
+   "max_ghz": 1.367182710545956,
    "memory": {
-    "value": "5",
+    "value": "6",
     "unit": "GIGABYTE"
    }
   }
@@ -30,33 +30,33 @@
   {
    "driver": "SSD",
    "memory": {
-    "value": "665",
+    "value": "983",
     "unit": "GIGABYTE"
    }
   },
   {
    "driver": "HDD",
    "memory": {
-    "value": "6",
+    "value": "3",
     "unit": "GIGABYTE"
    }
   }
  ],
  "screen": {
-  "size_inch": 20.46292,
+  "size_inch": 23.417292,
   "resolution": {
-   "width": 2026,
-   "height": 1140
+   "width": 3445,
+   "height": 1938
   },
-  "panel": "IPS",
-  "multitouch": false
+  "panel": "OLED",
+  "multitouch": true
  },
  "keyboard": {
-  "layout": "QWERTZ",
-  "backlit": false
+  "layout": "QWERTY",
+  "backlit": true
  },
- "weight_kg": 1.9565938803194065,
- "price_usd": 2590.289007613816,
- "release_year": 2020,
- "updateAt": "2021-01-12T14:14:09.720030100Z"
+ "weight_kg": 2.4849943130986505,
+ "price_usd": 1553.4393682601478,
+ "release_year": 2019,
+ "updateAt": "2021-01-15T15:09:33.558638800Z"
 }

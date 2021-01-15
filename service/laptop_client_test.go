@@ -1,7 +1,9 @@
 package service
 
 import (
+	"bufio"
 	"context"
+	"fmt"
 	"github.com/stretchr/testify/require"
 	"github.com/treeforest/grpc-pcbook/pb"
 	"github.com/treeforest/grpc-pcbook/sample"
@@ -9,13 +11,16 @@ import (
 	"google.golang.org/grpc"
 	"io"
 	"net"
+	"os"
+	"path/filepath"
 	"testing"
 )
 
 func TestClientCreateLaptop(t *testing.T) {
 	t.Parallel()
 
-	laptopServer, serverAddress := startTestLaptopServer(t, NewInMemoryLaptopStore())
+	laptopStore := NewInMemoryLaptopStore()
+	serverAddress := startTestLaptopServer(t, laptopStore, nil)
 	laptopClient := newTestLaptopClient(t, serverAddress)
 
 	laptop := sample.NewLaptop()
@@ -29,8 +34,8 @@ func TestClientCreateLaptop(t *testing.T) {
 	require.NotNil(t, res)
 	require.Equal(t, expectedID, res.Id)
 
-	// check that the laptop is saved to the store
-	other, err := laptopServer.Store.Find(res.Id)
+	// check that the laptop is saved to the laptopStore
+	other, err := laptopStore.Find(res.Id)
 	require.NoError(t, err)
 	require.NotNil(t, other)
 
@@ -48,7 +53,7 @@ func TestClientSearchLaptop(t *testing.T) {
 		MinRam: &pb.Memory{Value: 8, Unit: pb.Memory_GIGABYTE},
 	}
 
-	store := NewInMemoryLaptopStore()
+	laptopStore := NewInMemoryLaptopStore()
 	expectedIDs := make(map[string]bool)
 
 	for i := 0; i < 6; i++ {
@@ -79,12 +84,12 @@ func TestClientSearchLaptop(t *testing.T) {
 			expectedIDs[laptop.Id] = true
 		}
 
-		err := store.Save(laptop)
+		err := laptopStore.Save(laptop)
 		require.NoError(t, err)
 	}
 
-	_, serverAddres := startTestLaptopServer(t, store)
-	laptopClient := newTestLaptopClient(t, serverAddres)
+	serverAddress := startTestLaptopServer(t, laptopStore, nil)
+	laptopClient := newTestLaptopClient(t, serverAddress)
 
 	req := &pb.SearchLaptopRequest{Filter: filter}
 	stream, err := laptopClient.SearchLaptop(context.Background(), req)
@@ -106,8 +111,77 @@ func TestClientSearchLaptop(t *testing.T) {
 	require.Equal(t, len(expectedIDs), found)
 }
 
-func startTestLaptopServer(t *testing.T, store *InMemoryLaptopStore) (*LaptopServer, string) {
-	laptopServer := NewLaptopServer(store)
+func TestClientUploadImage(t *testing.T) {
+	t.Parallel()
+
+	testImageFolder := "../tmp"
+
+	laptopStore := NewInMemoryLaptopStore()
+	imageStore := NewDiskImageStore(testImageFolder)
+
+	laptop := sample.NewLaptop()
+	err := laptopStore.Save(laptop)
+	require.NoError(t, err)
+
+	serverAddress := startTestLaptopServer(t, laptopStore, imageStore)
+	laptopClient := newTestLaptopClient(t, serverAddress)
+
+	imagePath := filepath.Join(testImageFolder, "laptop.jpg")
+	file, err := os.Open(imagePath)
+	require.NoError(t, err)
+	defer file.Close()
+
+	stream, err := laptopClient.UploadImage(context.Background())
+	require.NoError(t, err)
+
+	imageType := filepath.Ext(imagePath)
+	req := &pb.UploadImageRequest{
+		Data: &pb.UploadImageRequest_Info{
+			Info: &pb.ImageInfo{
+				LaptopId:  laptop.GetId(),
+				ImageType: imageType,
+			},
+		},
+	}
+
+	err = stream.Send(req)
+	require.NoError(t, err)
+
+	reader := bufio.NewReader(file)
+	buffer := make([]byte, 1024)
+	size := 0
+
+	for {
+		n, err := reader.Read(buffer)
+		if err == io.EOF {
+			break
+		}
+
+		require.NoError(t, err)
+		size += n
+
+		req := &pb.UploadImageRequest{
+			Data: &pb.UploadImageRequest_ChunkData{
+				ChunkData: buffer[:n],
+			},
+		}
+
+		err = stream.Send(req)
+		require.NoError(t, err)
+	}
+
+	res, err := stream.CloseAndRecv()
+	require.NoError(t, err)
+	require.NotZero(t, res.GetId())
+	require.EqualValues(t, size, res.GetSize())
+
+	saveImagePath := filepath.Join(testImageFolder, fmt.Sprintf("%s%s", res.GetId(), imageType))
+	require.FileExists(t, saveImagePath)
+	require.NoError(t, os.Remove(saveImagePath))
+}
+
+func startTestLaptopServer(t *testing.T, laptopStore LaptopStore, imageStore ImageStore) string {
+	laptopServer := NewLaptopServer(laptopStore, imageStore)
 
 	grpcServer := grpc.NewServer()
 	pb.RegisterLaptopServiceServer(grpcServer, laptopServer)
@@ -117,7 +191,7 @@ func startTestLaptopServer(t *testing.T, store *InMemoryLaptopStore) (*LaptopSer
 
 	go grpcServer.Serve(listener)
 
-	return laptopServer, listener.Addr().String()
+	return listener.Addr().String()
 }
 
 func newTestLaptopClient(t *testing.T, serverAddr string) pb.LaptopServiceClient {
