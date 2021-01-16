@@ -1,27 +1,27 @@
 {
- "id": "d8871d00-0204-485b-9371-1f99b7454f1c",
- "brand": "Apple",
- "name": "Macbook Pro",
+ "id": "062178c7-4c97-4483-b620-d761b902ead4",
+ "brand": "Lenovo",
+ "name": "Thinkpad X1",
  "cpu": {
   "brand": "Intel",
   "name": "Core i5-1050F",
-  "number_cores": 2,
-  "number_threads": 6,
-  "min_ghz": 3.0727544484447886,
-  "max_ghz": 3.7337108935923915
+  "number_cores": 5,
+  "number_threads": 11,
+  "min_ghz": 3.254501510475964,
+  "max_ghz": 3.729208513812147
  },
  "ram": {
-  "value": "9",
+  "value": "40",
   "unit": "GIGABYTE"
  },
  "gpus": [
   {
    "brand": "AMD",
-   "name": "RX 580",
-   "min_ghz": 1.3165943747550917,
-   "max_ghz": 1.367182710545956,
+   "name": "RX 550",
+   "min_ghz": 1.3623568091096325,
+   "max_ghz": 1.6605706917700223,
    "memory": {
-    "value": "6",
+    "value": "4",
     "unit": "GIGABYTE"
    }
   }
@@ -30,33 +30,33 @@
   {
    "driver": "SSD",
    "memory": {
-    "value": "983",
+    "value": "657",
     "unit": "GIGABYTE"
    }
   },
   {
    "driver": "HDD",
    "memory": {
-    "value": "3",
+    "value": "4",
     "unit": "GIGABYTE"
    }
   }
  ],
  "screen": {
-  "size_inch": 23.417292,
+  "size_inch": 24.18838,
   "resolution": {
-   "width": 3445,
-   "height": 1938
+   "width": 2584,
+   "height": 1454
   },
-  "panel": "OLED",
-  "multitouch": true
+  "panel": "IPS",
+  "multitouch": false
  },
  "keyboard": {
   "layout": "QWERTY",
-  "backlit": true
+  "backlit": false
  },
- "weight_kg": 2.4849943130986505,
- "price_usd": 1553.4393682601478,
+ "weight_kg": 2.7139506319596007,
+ "price_usd": 1605.946359326637,
  "release_year": 2019,
- "updateAt": "2021-01-15T15:09:33.558638800Z"
+ "updateAt": "2021-01-16T06:21:56.836320400Z"
 }

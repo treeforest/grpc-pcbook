@@ -2,16 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d93b8669-ec6a-4628-ad1d-363f75302db8" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmd/client/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/cmd/client/main.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmd/server/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/cmd/server/main.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pb/laptop_service.pb.go" beforeDir="false" afterPath="$PROJECT_DIR$/pb/laptop_service.pb.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/proto/laptop_service.proto" beforeDir="false" afterPath="$PROJECT_DIR$/proto/laptop_service.proto" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sample/generator.go" beforeDir="false" afterPath="$PROJECT_DIR$/sample/generator.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/service/laptop_client_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/laptop_client_test.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/service/laptop_service.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/laptop_service.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/service/laptop_service_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/laptop_service_test.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/laptop_store.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/laptop_store.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp/laptop.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp/laptop.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tmp/laptop.bin" beforeDir="false" afterPath="$PROJECT_DIR$/tmp/laptop.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tmp/laptop.json" beforeDir="false" afterPath="$PROJECT_DIR$/tmp/laptop.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,7 +58,18 @@
       <recent name="D:\GoPath\src\github.com\treeforest\grpc-pcbook\tmp" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Go Test.TestClientRateLaptop in github.com/treeforest/grpc-pcbook/service">
+    <configuration name="TestClientRateLaptop in github.com/treeforest/grpc-pcbook/service" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+      <module name="grpc-pcbook" />
+      <working_directory value="$PROJECT_DIR$/service" />
+      <framework value="gotest" />
+      <kind value="PACKAGE" />
+      <package value="github.com/treeforest/grpc-pcbook/service" />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$" />
+      <pattern value="^\QTestClientRateLaptop\E$" />
+      <method v="2" />
+    </configuration>
     <configuration name="TestClientUploadImage in github.com/treeforest/grpc-pcbook/service" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
       <module name="grpc-pcbook" />
       <working_directory value="$PROJECT_DIR$/service" />
@@ -71,6 +83,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Go Test.TestClientRateLaptop in github.com/treeforest/grpc-pcbook/service" />
         <item itemvalue="Go Test.TestClientUploadImage in github.com/treeforest/grpc-pcbook/service" />
       </list>
     </recent_temporary>

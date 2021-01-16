@@ -1,8 +1,8 @@
 package sample
 
 import (
-	"github.com/treeforest/grpc-pcbook/pb"
 	"github.com/golang/protobuf/ptypes"
+	"github.com/treeforest/grpc-pcbook/pb"
 )
 
 // NewKeyboard return a new sample keyboard
@@ -134,3 +134,9 @@ func NewLaptop() *pb.Laptop {
 
 	return laptop
 }
+
+// RandomLaptopScore returns a random laptop store
+func RandomLaptopScore() float64 {
+	return float64(randomInt(1, 10))
+}
+
