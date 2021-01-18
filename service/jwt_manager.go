@@ -34,7 +34,7 @@ func (manager *JWTManager) Generate(user *User) (string, error) {
 		Role:     user.Role,
 	}
 
-	token := jwt.NewWithClaims(jwt.SigningMethodES256, claims)
+	token := jwt.NewWithClaims(jwt.SigningMethodHS256, claims)
 	return token.SignedString([]byte(manager.secretKey))
 }
 

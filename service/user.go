@@ -30,7 +30,7 @@ func NewUser(username string, password string, role string) (*User, error) {
 
 // IsCorrectPassword checks if the provided password is correct or not
 func (user *User) IsCorrectPassword(password string) bool {
-	err := bcrypt.CompareHashAndPassword([]byte(password), []byte(user.HashedPassword))
+	err := bcrypt.CompareHashAndPassword([]byte(user.HashedPassword), []byte(password))
 	return err == nil
 }
 

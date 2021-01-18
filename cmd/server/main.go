@@ -1,7 +1,6 @@
 package main
 
 import (
-	"context"
 	"flag"
 	"fmt"
 	"github.com/treeforest/grpc-pcbook/pb"
@@ -10,43 +9,63 @@ import (
 	"google.golang.org/grpc/reflection"
 	"log"
 	"net"
+	"time"
 )
 
-func unaryInterceptor(
-	ctx context.Context,
-	req interface{},
-	info *grpc.UnaryServerInfo,
-	handler grpc.UnaryHandler,
-	) (resp interface{}, err error) {
-	log.Println("--> unary interceptor: ", info.FullMethod)
-	return handler(ctx, req)
+func seedUsers(userStore service.UserStore) error {
+	err := createUser(userStore, "admin1", "secret", "admin")
+	if err != nil {
+		return err
+	}
+	return createUser(userStore, "user1", "secret", "user")
 }
 
-func streamInterceptor (
-	srv interface{},
-	stream grpc.ServerStream,
-	info *grpc.StreamServerInfo,
-	handler grpc.StreamHandler,
-	) error {
-	log.Println("--> stream interceptor: ", info.FullMethod)
-	return handler(srv, stream)
+func createUser(userStore service.UserStore, username, password, role string) error {
+	user, err := service.NewUser(username, password, role)
+	if err != nil {
+		return err
+	}
+	return userStore.Save(user)
 }
 
+const (
+	secretKey = "secret"
+	tokenDuration = 15 * time.Minute
+)
+
+func accessibleRoles() map[string][]string {
+	const laptopServicePath = "/techschool.pcbook.LaptopService/"
+	return map[string][]string{
+		laptopServicePath + "CreateLaptop":{"admin"},
+		laptopServicePath + "UploadImage":{"admin"},
+		laptopServicePath + "RateLaptop":{"admin", "user"},
+	}
+}
 
 func main() {
 	port := flag.Int("port", 0, "the server port")
 	flag.Parse()
 	log.Printf("start server on port %d", *port)
 
+	userStore := service.NewInMemoryUserStore()
+	if err := seedUsers(userStore); err != nil {
+		log.Fatal("cannot seed users")
+	}
+	jwtManager := service.NewJWTManager(secretKey, tokenDuration)
+	authServer := service.NewAuthServer(userStore, jwtManager)
+
 	laptopStore := service.NewInMemoryLaptopStore()
 	imageStore := service.NewDiskImageStore("img")
 	ratingStore := service.NewInMemoryRatingStore()
 	laptopServer := service.NewLaptopServer(laptopStore, imageStore, ratingStore)
 
+	interceptor := service.NewAuthInterceptor(jwtManager, accessibleRoles())
 	grpcServer := grpc.NewServer(
-		grpc.UnaryInterceptor(unaryInterceptor),
-		grpc.StreamInterceptor(streamInterceptor),
+		grpc.UnaryInterceptor(interceptor.Unary()),
+		grpc.StreamInterceptor(interceptor.Stream()),
 		)
+
+	pb.RegisterAuthServiceServer(grpcServer, authServer)
 	pb.RegisterLaptopServiceServer(grpcServer, laptopServer)
 	reflection.Register(grpcServer)
 
