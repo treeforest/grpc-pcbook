@@ -3,16 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="d93b8669-ec6a-4628-ad1d-363f75302db8" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmd/client/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/cmd/client/main.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmd/server/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/cmd/server/main.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pb/laptop_service.pb.go" beforeDir="false" afterPath="$PROJECT_DIR$/pb/laptop_service.pb.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/proto/laptop_service.proto" beforeDir="false" afterPath="$PROJECT_DIR$/proto/laptop_service.proto" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sample/generator.go" beforeDir="false" afterPath="$PROJECT_DIR$/sample/generator.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/laptop_client_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/laptop_client_test.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/laptop_service.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/laptop_service.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/laptop_service_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/laptop_service_test.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp/laptop.bin" beforeDir="false" afterPath="$PROJECT_DIR$/tmp/laptop.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp/laptop.json" beforeDir="false" afterPath="$PROJECT_DIR$/tmp/laptop.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/go.sum" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/modules.txt" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/modules.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
