@@ -3,14 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="d93b8669-ec6a-4628-ad1d-363f75302db8" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cert/ca-cert.pem" beforeDir="false" afterPath="$PROJECT_DIR$/cert/ca-cert.pem" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cert/ca-cert.srl" beforeDir="false" afterPath="$PROJECT_DIR$/cert/ca-cert.srl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cert/ca-key.pem" beforeDir="false" afterPath="$PROJECT_DIR$/cert/ca-key.pem" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cert/gen.sh" beforeDir="false" afterPath="$PROJECT_DIR$/cert/gen.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cert/server-cert.pem" beforeDir="false" afterPath="$PROJECT_DIR$/cert/server-cert.pem" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cert/server-key.pem" beforeDir="false" afterPath="$PROJECT_DIR$/cert/server-key.pem" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cert/server-req.pem" beforeDir="false" afterPath="$PROJECT_DIR$/cert/server-req.pem" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmd/server/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/cmd/server/main.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
