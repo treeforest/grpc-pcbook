@@ -17,6 +17,7 @@ const maxImageSize = 1 << 20
 
 // LaptopServer is the server that provide laptop service
 type LaptopServer struct {
+	pb.UnimplementedLaptopServiceServer
 	laptopStore LaptopStore
 	imageStore  ImageStore
 	ratingStore RatingStore
